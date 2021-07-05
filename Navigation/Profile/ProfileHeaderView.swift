@@ -43,6 +43,11 @@ class ProfileHeaderView: UIView {
     
     let inputStatus: UITextField = {
         let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        textField.textColor = .black
+        textField.layer.cornerRadius = 12
+        textField.layer.borderWidth = 1
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -75,7 +80,7 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func buttonPressed() {
-        print("Pressed")
+        descriptionLabel.text = inputStatus.text ?? ""
     }
     
     func setupViews() {
@@ -83,6 +88,7 @@ class ProfileHeaderView: UIView {
         addSubview(nameLabel)
         addSubview(descriptionLabel)
         addSubview(showStatusButton)
+        addSubview(inputStatus)
         
         NSLayoutConstraint.activate([
             avatarImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -95,7 +101,11 @@ class ProfileHeaderView: UIView {
             showStatusButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
             showStatusButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 16),
             showStatusButton.heightAnchor.constraint(equalToConstant: 50),
-            descriptionLabel.bottomAnchor.constraint(equalTo: showStatusButton.topAnchor, constant: -34),
+            inputStatus.bottomAnchor.constraint(equalTo: showStatusButton.topAnchor, constant: -34),
+            inputStatus.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 27),
+            inputStatus.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            inputStatus.heightAnchor.constraint(equalToConstant: 40),
+            descriptionLabel.bottomAnchor.constraint(equalTo: inputStatus.topAnchor, constant: -16),
             descriptionLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 27)
         ])
         
