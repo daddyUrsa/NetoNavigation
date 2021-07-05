@@ -41,6 +41,13 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
+    let inputStatus: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    
     let showStatusButton: UIButton = {
         let button = UIButton()
         button.setTitle("Show status", for: .normal)
